@@ -1,0 +1,74 @@
+[tool.poetry]
+name = "irc"
+version = "0.1.0"
+description = ""
+authors = ["kharchenko_bohdan <bohdan.kharchenko@l-center.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.2"
+pydantic = "^2.8.2"
+alembic = "^1.13.2"
+sqlalchemy = "^2.0.31"
+asyncpg = "^0.29.0"
+pydantic-settings = "^2.3.4"
+httpx = "^0.27.0"
+testcontainers = {extras = ["postgres"], version = "^4.7.2"}
+greenlet = "^3.0.3"
+psycopg2-binary = "^2.9.9"
+aiobotocore = "^2.15.2"
+aioboto3 = "^13.2.0"
+pytest-mock = "^3.14.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.1"
+faker = "^30.3.0"
+pytest-asyncio = "^0.24.0"
+watchdog = "^5.0.3"
+isort = "^5.13.2"
+black = "^24.4.2"
+fastapi-cli = "^0.0.4"
+openapi-spec-validator = "^0.7.1"
+flake8 = "^7.1.1"
+pyright = "^1.1.374"
+pylint = {extras = ["spelling"], version = "^3.3.1"}
+gunicorn = "^23.0.0"
+uvicorn = {extras = ["standard"], version = "0.31.1"}
+coverage = "^7.6.1"
+flake8-pyproject = "^1.2.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 79
+include_trailing_comma = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+testpaths = ["tests"]
+addopts = "-v"
+
+[tool.flake8]
+extend-ignore = "E203,E501,E701"
+
+[tool.pylint.format]
+max-line-length = 79
+
+[tool.pylint.MASTER]
+extension-pkg-whitelist = ''
+fail-under = '10.0'
+ignore = '.git,.venv,migrations'
+ignore-patterns = ''
+jobs = 0
+disable = 'C0114,C0115,C0116,R0903'
